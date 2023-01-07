@@ -1,70 +1,122 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Django + React JWT Token Auth APP App
 
-## Available Scripts
+It is a basic note web app that is created using Django and Django REST Framework with token authentication and React.
+It is good for learning first time how to connect Django with React or Any backend to frontend using REST API. It is good for those who are new to authentication using Django REST Framework.
+## Installation
 
-In the project directory, you can run:
+First clone the github repository
 
-### `npm start`
+```bash
+  git clone https://github.com/nmastepankaj/note_app_django_react.git
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open the repository folder in any code editor (VS code) or open any terminal.
+Move to the backend folder and install all the requirements.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+  cd backend
+```
 
-### `npm test`
+You need to create virtual environment for the project. If you don't have virtualenv the install it using the below command :-
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+  virtualenv venv
+```
 
-### `npm run build`
+Now, activate the virtual environment using the below command.
+If you're window user :-
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+  ./venv/Scripts/activate
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If you're linux user :-
 
-### `npm run eject`
+```bash
+  source venv/bin/activate
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Then move to your project folder 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+  cd note_app
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+install all the project requirements
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+  pip install -r requirement.txt
+```
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Now, you need to create migrations and migrate all the migrations
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+  python manage.py makemigrations
+  python manage.py migrate
+```
 
-### Code Splitting
+Create super user for your project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+  python manage.py createsuperuser
+```
 
-### Analyzing the Bundle Size
+Run your project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+  python manage.py runserver
+```
 
-### Making a Progressive Web App
+Next step is to install the Frontend libraries. Open another terminal
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+  cd frontend
+  npm i
+```
 
-### Advanced Configuration
+Now start your react application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+  npm start
+```
 
-### Deployment
+Now your application is ready to use. First register a user and login with the provided credentials.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+## Authors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [@nmastepankaj](https://www.github.com/nmastepankaj)
+
+
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://nmastepankaj.netlify.app/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nmastepankaj/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/nmastepankaj)
+
+
+## 🚀 About Me
+I'm a full LAMP stack developer with Django as backend and React as frontend.
+
+
+## Feedback
+
+If you have any feedback, please reach out to us at my profile link provided above.
+
+
+## Support
+
+For support, email support@codingnap.com or follow me on insta (nmastepankaj).
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Appendix
+
+Frontend of this project is taken from the [CodeWithHarry](https://github.com/CodeWithHarry) inotebook project.
+
