@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -8,12 +9,16 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import Alert from '@mui/material/Alert';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { connect } from 'react-redux'
 import { fetchToken } from '../../redux'
+import {authErrors, isAuthenticated} from '../../redux/rootReducer'
+import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -33,16 +38,21 @@ const theme = createTheme();
 function SignIn(props) {
    const handleSubmit = async (event) => {
     event.preventDefault();
-    // const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
-    await props.fetchToken();
-    console.log(props);
-    console.log(props.token.access);
+    const data = new FormData(event.currentTarget);
+
+    let email= data.get('email');
+    let password= data.get('password');
+
+    await props.fetchToken(email,password);
   };
 
+  let navigate = useNavigate();
+  useEffect(() => {
+    if(props.isAuthenticated) {
+      return navigate("/dashboard")    
+    } 
+  }, [props])
+  
   return (
     <ThemeProvider theme={theme}>
       
@@ -60,7 +70,7 @@ function SignIn(props) {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in {props.token.access}
+            Sign in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -106,6 +116,9 @@ function SignIn(props) {
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
+              <Grid item>
+               {props.authErrors.length > 0 && <Alert severity="error">{props.authErrors}!</Alert>}
+              </Grid>
             </Grid>
           </Box>
         </Box>
@@ -118,13 +131,15 @@ function SignIn(props) {
 
 const mapStateToProps = state => {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    isAuthenticated: isAuthenticated(state),
+    authErrors : authErrors(state)
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchToken: () => dispatch(fetchToken())
+    fetchToken: (email,password) => dispatch(fetchToken(email,password))
   }
 }
 

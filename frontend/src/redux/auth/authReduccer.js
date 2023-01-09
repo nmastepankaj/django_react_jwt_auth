@@ -6,7 +6,8 @@ import {
     // TOKEN_SUCCESS,
     // TOKEN_FAILURE
   } from './authTypes'
-  
+  import jwt_decode from "jwt-decode";
+
   const initialState = {
     loading: false,
     token: [],
@@ -36,5 +37,36 @@ import {
     }
   }
   
+  export function accessToken(state) {
+    if (state.token) {
+        return  state.token.access
+    }
+  }
+    
+  export function refreshToken(state) {
+    if (state.token) {
+        return  state.token.refresh
+    }
+  }
+    
+  export function isAccessTokenExpired(state) {
+  if (state.token && state.token.access) {
+    return 1000 * jwt_decode(state.token.refresh).exp - (new Date()).getTime() < 5000
+  }
+  return true
+  }
+  export function isRefreshTokenExpired(state) {
+    if (state.token && state.token.refresh) {
+    return 1000 * jwt_decode(state.token.refresh).exp - (new Date()).getTime() < 5000
+  }
+  return true
+  }
+  export function isAuthenticated(state) {
+    return !isRefreshTokenExpired(state)
+  }
+  export function errors(state) {
+   return  state.error
+  }
+
   export default authReducer
   

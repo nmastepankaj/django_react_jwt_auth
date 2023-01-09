@@ -1,2 +1,2 @@
 export { buyCake } from './cake/cakeActions'
-export { fetchToken } from './auth/authAtions'
+export * from './auth/authAtions'

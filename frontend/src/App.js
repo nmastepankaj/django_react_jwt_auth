@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import SignIn from './components/Authentication/SignIn';
 import Home from './components/Home/Home';
 import CakeContainer from './components/CakeContainer';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -19,6 +20,12 @@ function App() {
           path="/login"
           element={
             <SignIn/>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <Dashboard/>
           }
         />
       </Routes>
