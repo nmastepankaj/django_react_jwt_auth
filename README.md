@@ -118,5 +118,6 @@ For support, email support@codingnap.com or follow me on insta (nmastepankaj).
 
 ## Appendix
 
-Frontend of this project is taken from the [CodeWithHarry](https://github.com/CodeWithHarry) inotebook project.
+- Frontend of this project is taken from the [CodeWithHarry](https://github.com/CodeWithHarry) inotebook project.
+- Learn more about this on [codingnap](https://www.codingnap.com)
 
